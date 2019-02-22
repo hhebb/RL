@@ -13,7 +13,7 @@ class DQN:
 
     # 네트워크를 위한 식 만들기 (레이어는 어떻게 구성되어 있으며, 활성화 함수는 어떤 것을 사용할지)
     def _build_network(self, h1_size, h2_size, l_rate=1e-1):
-        with tf.variable_scope(self.net_name):
+        with tf.variable_scope(self.net_name, reuse=tf.AUTO_REUSE):
             self._X = tf.placeholder(tf.float32, [None, self.input_size], name="input_x")
 
             W1 = tf.get_variable("W1", shape=[
